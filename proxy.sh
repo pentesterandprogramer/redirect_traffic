@@ -2,7 +2,7 @@
 printf "Execute script like me '\033[32msource proxy.sh'\033[0m sleep 2"
 sleep 2
 clear
-name=$(curl -s ifconfig.co/ip)
+name=$(curl -s ifconfig.me)
 
 printf "My ip is \033[31m%s\033[0m \n" ${name}
 
@@ -30,15 +30,15 @@ case "$answer" in
 	*)
 	 echo "for redirect execute like me . test.sh" ;;
 esac
-if  ! grep -q  127 /etc/privoxy/config
+if  ! grep -q  "forward-socks4 / 127.0.0.1:9050 ." /etc/privoxy/config
 then
-	echo "forward-socks4 / 127.0.0.1:9050 ." >> /etc/privoxy/config
-	echo "forward-socks5 / 127.0.0.1:9050 ." >> /etc/privoxy/config
-	echo "forward-socks4a / 127.0.0.1:9050 ." >> /etc/privoxy/config
+	echo "forward-socks4 / 127.0.0.1:9050 ." | sudo tee -a  /etc/privoxy/config
+	echo "forward-socks5 / 127.0.0.1:9050 ." | sudo tee -a  /etc/privoxy/config
+	echo "forward-socks4a / 127.0.0.1:9050 ."| sudo tee -a  /etc/privoxy/config
 fi
 
 
 
 
-name=$(curl -s ifconfig.co/ip)
+name=$(curl -s ifconfig.me)
 printf "My ip is \033[31m%s\033[0m \n" ${name}
