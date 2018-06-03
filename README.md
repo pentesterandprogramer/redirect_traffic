@@ -1,4 +1,4 @@
 # redirect_traffic
-for anonymity
-execute by source 
-execute like me   source proxy.sh
+
+source proxy.sh [start|stop|show_ip]
+
