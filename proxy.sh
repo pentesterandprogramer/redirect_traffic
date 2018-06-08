@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name=$(curl -s ifconfig.co)
-trap 'echo "$name"' EXIT
+
 #Give me name script
 name1=$(basename $0)
 	case "$1" in
